@@ -493,8 +493,7 @@ bail:
 							CFRelease(cgImageResult);
 						
 					});
-					NSLog(@"aaaaaaaaa*************");
-					[ciImage release];
+										[ciImage release];
 				}
 				else {
                     
@@ -520,19 +519,19 @@ bail:
 }
 
 // turn on/off face detection
-- (IBAction)toggleFaceDetection:(id)sender
-{
-	detectFaces = [(UISwitch *)sender isOn];
-	[[videoDataOutput connectionWithMediaType:AVMediaTypeVideo] setEnabled:detectFaces];
-	if (!detectFaces) {
-		dispatch_async(dispatch_get_main_queue(), ^(void) {
-            
-			// clear out any squares currently displaying.
-            
-			[self drawFaceBoxesForFeatures:[NSArray array] forVideoBox:CGRectZero orientation:UIDeviceOrientationPortrait];
-		});
-	}
-}
+//- (IBAction)toggleFaceDetection:(id)sender
+//{
+//	detectFaces = [(UISwitch *)sender isOn];
+//	[[videoDataOutput connectionWithMediaType:AVMediaTypeVideo] setEnabled:detectFaces];
+//	if (!detectFaces) {
+//		dispatch_async(dispatch_get_main_queue(), ^(void) {
+//            
+//			// clear out any squares currently displaying.
+//            
+//			[self drawFaceBoxesForFeatures:[NSArray array] forVideoBox:CGRectZero orientation:UIDeviceOrientationPortrait];
+//		});
+//	}
+//}
 
 // find where the video box is positioned within the preview layer based on the video size and gravity
 + (CGRect)videoPreviewBoxForGravity:(NSString *)gravity frameSize:(CGSize)frameSize apertureSize:(CGSize)apertureSize
@@ -762,7 +761,7 @@ bail:
     // that represents image data valid for display.
 	CMFormatDescriptionRef fdesc = CMSampleBufferGetFormatDescription(sampleBuffer);
 	CGRect clap = CMVideoFormatDescriptionGetCleanAperture(fdesc, false /*originIsTopLeft == false*/);
-//    [NSThread sleepForTimeInterval:2];
+    [NSThread sleepForTimeInterval:0.5];
 	dispatch_async(dispatch_get_main_queue(), ^(void) {
 		[self drawFaceBoxesForFeatures:features forVideoBox:clap orientation:curDeviceOrientation];
 	});
@@ -781,7 +780,11 @@ bail:
 {
 	AVCaptureDevicePosition desiredPosition;
 	if (isUsingFrontFacingCamera)
+    {
+        
 		desiredPosition = AVCaptureDevicePositionBack;
+    
+    }
 	else
 		desiredPosition = AVCaptureDevicePositionFront;
 	
@@ -817,6 +820,31 @@ bail:
 	NSDictionary *detectorOptions = [[NSDictionary alloc] initWithObjectsAndKeys:CIDetectorAccuracyLow, CIDetectorAccuracy, nil];
 	faceDetector = [[CIDetector detectorOfType:CIDetectorTypeFace context:nil options:detectorOptions] retain];
 	[detectorOptions release];
+    isUsingFrontFacingCamera = YES;
+    AVCaptureDevicePosition desiredPosition;
+    desiredPosition = AVCaptureDevicePositionFront;
+    for (AVCaptureDevice *d in [AVCaptureDevice devicesWithMediaType:AVMediaTypeVideo]) {
+        if ([d position] == desiredPosition) {
+            [[previewLayer session] beginConfiguration];
+            AVCaptureDeviceInput *input = [AVCaptureDeviceInput deviceInputWithDevice:d error:nil];
+            for (AVCaptureInput *oldInput in [[previewLayer session] inputs]) {
+                [[previewLayer session] removeInput:oldInput];
+            }
+            [[previewLayer session] addInput:input];
+            [[previewLayer session] commitConfiguration];
+            break;
+        }
+    }
+    detectFaces = YES;
+    	[[videoDataOutput connectionWithMediaType:AVMediaTypeVideo] setEnabled:detectFaces];
+    	if (!detectFaces) {
+    		dispatch_async(dispatch_get_main_queue(), ^(void) {
+    
+    			// clear out any squares currently displaying.
+    
+    			[self drawFaceBoxesForFeatures:[NSArray array] forVideoBox:CGRectZero orientation:UIDeviceOrientationPortrait];
+    		});
+    	}
 }
 
 - (void)viewDidUnload
