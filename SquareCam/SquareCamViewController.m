@@ -347,6 +347,10 @@ bail:
     // features found by the face detector
 	for ( CIFaceFeature *ff in features ) {
 		CGRect faceRect = [ff bounds];
+        faceRect.size.width *= 0.35;
+        faceRect.origin.y *= 1.1;
+        faceRect.origin.x *= 1.2;
+        faceRect.size.height *= 0.9;
 		CGContextDrawImage(bitmapContext, faceRect, [rotatedSquareImage CGImage]);
 	}
 	returnImage = CGBitmapContextCreateImage(bitmapContext);
@@ -489,10 +493,11 @@ bail:
 							CFRelease(cgImageResult);
 						
 					});
-					
+					NSLog(@"aaaaaaaaa*************");
 					[ciImage release];
 				}
 				else {
+                    
 					// trivial simple JPEG case
 					NSData *jpegData = [AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageDataSampleBuffer];
 					CFDictionaryRef attachments = CMCopyDictionaryOfAttachments(kCFAllocatorDefault, 
@@ -521,7 +526,9 @@ bail:
 	[[videoDataOutput connectionWithMediaType:AVMediaTypeVideo] setEnabled:detectFaces];
 	if (!detectFaces) {
 		dispatch_async(dispatch_get_main_queue(), ^(void) {
+            
 			// clear out any squares currently displaying.
+            
 			[self drawFaceBoxesForFeatures:[NSArray array] forVideoBox:CGRectZero orientation:UIDeviceOrientationPortrait];
 		});
 	}
@@ -574,6 +581,8 @@ bail:
 // to detect features and for each draw the red square in a layer and set appropriate orientation
 - (void)drawFaceBoxesForFeatures:(NSArray *)features forVideoBox:(CGRect)clap orientation:(UIDeviceOrientation)orientation
 {
+    
+    
 	NSArray *sublayers = [NSArray arrayWithArray:[previewLayer sublayers]];
 	NSInteger sublayersCount = [sublayers count], currentSublayer = 0;
 	NSInteger featuresCount = [features count], currentFeature = 0;
@@ -598,22 +607,13 @@ bail:
 	CGRect previewBox = [SquareCamViewController videoPreviewBoxForGravity:gravity 
 															   frameSize:parentFrameSize 
 															apertureSize:clap.size];
+    
 	
     for ( int i=0; i<[features count]; i++ ) {
 		// find the correct position for the square layer within the previewLayer
 		// the feature box originates in the bottom left of the video frame.
 		// (Bottom right if mirroring is turned on)
         CIFaceFeature *ff = [features objectAtIndex:i];
-        
-//        if (ff.hasLeftEyePosition) {
-//            NSLog(@"Left eye %g %g", ff.leftEyePosition.x, ff.leftEyePosition.y);
-//        }
-//        if (ff.hasRightEyePosition) {
-//            NSLog(@"Right eye %g %g", ff.rightEyePosition.x, ff.rightEyePosition.y);
-//        }
-//        if (ff.hasMouthPosition) {
-//            NSLog(@"Mouth %g %g", ff.mouthPosition.x, ff.mouthPosition.y);
-//        }
         NSString *hasSmile = ff.hasSmile ? @"Yes" : @"No";
         NSString *hasLeftEye = ff.hasLeftEyePosition ? @"Yes" : @"No";
         NSString *hasRightEye = ff.hasRightEyePosition ? @"Yes" : @"No";
@@ -639,6 +639,12 @@ bail:
 		faceRect.size.height *= heightScaleBy;
 		faceRect.origin.x *= widthScaleBy;
 		faceRect.origin.y *= heightScaleBy;
+        faceRect.size.height *= 0.35;
+        faceRect.origin.y *= 1.2;
+        faceRect.origin.x *= 1.1;
+        faceRect.size.width *= 0.9;
+
+
 
 		if ( isMirrored )
 			faceRect = CGRectOffset(faceRect, previewBox.origin.x + previewBox.size.width - faceRect.size.width - (faceRect.origin.x * 2), previewBox.origin.y);
@@ -756,7 +762,7 @@ bail:
     // that represents image data valid for display.
 	CMFormatDescriptionRef fdesc = CMSampleBufferGetFormatDescription(sampleBuffer);
 	CGRect clap = CMVideoFormatDescriptionGetCleanAperture(fdesc, false /*originIsTopLeft == false*/);
-	
+//    [NSThread sleepForTimeInterval:2];
 	dispatch_async(dispatch_get_main_queue(), ^(void) {
 		[self drawFaceBoxesForFeatures:features forVideoBox:clap orientation:curDeviceOrientation];
 	});
