@@ -817,9 +817,30 @@ bail:
 	// Do any additional setup after loading the view, typically from a nib.
 	[self setupAVCapture];
 	square = [[UIImage imageNamed:@"sg.png"] retain];
-	NSDictionary *detectorOptions = [[NSDictionary alloc] initWithObjectsAndKeys:CIDetectorAccuracyLow, CIDetectorAccuracy, nil];
-	faceDetector = [[CIDetector detectorOfType:CIDetectorTypeFace context:nil options:detectorOptions] retain];
-	[detectorOptions release];
+     [self helper];
+	}
+-(void)helper{
+    [self setupAVCapture];
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    [button addTarget:self
+               action:@selector(takePicture:)
+     forControlEvents:UIControlEventTouchUpInside];
+    [button setTitle:@"Snap" forState:UIControlStateNormal];
+    button.frame = CGRectMake(190.0, 10.0, 160.0, 40.0);
+    [self.view addSubview:button];
+    
+    UIButton *button2 = [UIButton buttonWithType:UIButtonTypeCustom];
+    [button2 addTarget:self
+                action:@selector(next)
+      forControlEvents:UIControlEventTouchUpInside];
+    [button2 setTitle:@"Next" forState:UIControlStateNormal];
+    button2.frame = CGRectMake(100.0, 10.0, 160.0, 40.0);
+    [self.view addSubview:button2];
+    
+    
+    NSDictionary *detectorOptions = [[NSDictionary alloc] initWithObjectsAndKeys:CIDetectorAccuracyLow, CIDetectorAccuracy, nil];
+    faceDetector = [[CIDetector detectorOfType:CIDetectorTypeFace context:nil options:detectorOptions] retain];
+    [detectorOptions release];
     isUsingFrontFacingCamera = YES;
     AVCaptureDevicePosition desiredPosition;
     desiredPosition = AVCaptureDevicePositionFront;
@@ -836,17 +857,16 @@ bail:
         }
     }
     detectFaces = YES;
-    	[[videoDataOutput connectionWithMediaType:AVMediaTypeVideo] setEnabled:detectFaces];
-    	if (!detectFaces) {
-    		dispatch_async(dispatch_get_main_queue(), ^(void) {
-    
-    			// clear out any squares currently displaying.
-    
-    			[self drawFaceBoxesForFeatures:[NSArray array] forVideoBox:CGRectZero orientation:UIDeviceOrientationPortrait];
-    		});
-    	}
+    [[videoDataOutput connectionWithMediaType:AVMediaTypeVideo] setEnabled:detectFaces];
+    if (!detectFaces) {
+        dispatch_async(dispatch_get_main_queue(), ^(void) {
+            
+            // clear out any squares currently displaying.
+            
+            [self drawFaceBoxesForFeatures:[NSArray array] forVideoBox:CGRectZero orientation:UIDeviceOrientationPortrait];
+        });
+    }
 }
-
 - (void)viewDidUnload
 {
     [super viewDidUnload];
