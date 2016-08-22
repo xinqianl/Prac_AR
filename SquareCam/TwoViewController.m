@@ -1,22 +1,22 @@
 //
 //  TestViewController.m
-//  SquareCam 
+//  SquareCam
 //
 //  Created by Xinqian Li on 8/14/16.
 //
 //
 
-#import "TestViewController.h"
+#import "TwoViewController.h"
 #import "UIImage+animatedGIF.h"
-@interface TestViewController ()
+@interface TwoViewController ()
 
 @end
 
-@implementation TestViewController
+@implementation TwoViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"Body";
+//    self.title = @"Body";
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     [button addTarget:self
                action:@selector(helper)
@@ -129,8 +129,8 @@
     imagePickerController.mediaTypes = [NSArray arrayWithObject:@"public.image"];
     
     imagePickerController.cameraDevice = UIImagePickerControllerCameraDeviceRear;
-
-
+    
+    
     self.imgView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 500, 600)];
     
     self.imgView2 = [[UIImageView alloc] initWithFrame:CGRectMake(126, 320, 120, 130)];
@@ -140,46 +140,46 @@
     self.imgView1 = [[UIImageView alloc] initWithFrame:CGRectMake(88, 150, 200, 200)];
     self.imgView1.image = nil;
     
-// green/purple done
-//    [self.imgView1 setFrame:CGRectMake(150, 170, 254, 324)];
-//    self.imgView1.image = [UIImage imageNamed:@"green.png"];
+     //green/purple done
+        [self.imgView1 setFrame:CGRectMake(150, 240, 187, 225)];
+        self.imgView1.image = [UIImage imageNamed:@"purple.png"];
     
-    [self.imgView1 setFrame:CGRectMake(150, 210, 287, 319)];
-    self.imgView1.image = [UIImage imageNamed:@"indian.png"];
+//    [self.imgView1 setFrame:CGRectMake(150, 210, 287, 319)];
+//    self.imgView1.image = [UIImage imageNamed:@"indian.png"];
     
-//    blue shorts done
-//    self.imgView2 = [[UIImageView alloc] initWithFrame:CGRectMake(200, 400, 183, 209)];
-//    self.imgView2.image = [UIImage imageNamed:@"shorts.png"];
+ //       blue shorts done
+        self.imgView2 = [[UIImageView alloc] initWithFrame:CGRectMake(175, 380, 130, 160)];
+        self.imgView2.image = [UIImage imageNamed:@"shorts.png"];
     
-    self.imgView2 = [[UIImageView alloc] initWithFrame:CGRectMake(210, 470, 170, 170)];
-    self.imgView2.image = [UIImage imageNamed:@"jeans.png"];
-//    
-//    self.imgView3 = [[UIImageView alloc] initWithFrame:CGRectMake(180, 120, 130, 160)];
-//    self.imgView3.image = [UIImage imageNamed:@"polo_girl1.png"];
-//    self.imgView4 = [[UIImageView alloc] initWithFrame:CGRectMake(165, 230, 160, 120)];
-//    self.imgView4.image = [UIImage imageNamed:@"skirt1.png"];
+//    self.imgView2 = [[UIImageView alloc] initWithFrame:CGRectMake(210, 470, 170, 170)];
+//    self.imgView2.image = [UIImage imageNamed:@"jeans.png"];
+    //
+    //    self.imgView3 = [[UIImageView alloc] initWithFrame:CGRectMake(180, 120, 130, 160)];
+    //    self.imgView3.image = [UIImage imageNamed:@"polo_girl1.png"];
+    //    self.imgView4 = [[UIImageView alloc] initWithFrame:CGRectMake(165, 230, 160, 120)];
+    //    self.imgView4.image = [UIImage imageNamed:@"skirt1.png"];
     
-//        self.imgView3 = [[UIImageView alloc] initWithFrame:CGRectMake(150, 120, 165, 260)];
-//        self.imgView3.image = [UIImage imageNamed:@"dress2.png"];
+            self.imgView3 = [[UIImageView alloc] initWithFrame:CGRectMake(350, 260, 193, 402)];
+            self.imgView3.image = [UIImage imageNamed:@"dress1.png"];
     
-//    self.imgView3 = [[UIImageView alloc] initWithFrame:CGRectMake(150, 120, 145, 323)];
-//    self.imgView3.image = [UIImage imageNamed:@"dress3.png"];
-
+    //    self.imgView3 = [[UIImageView alloc] initWithFrame:CGRectMake(150, 120, 145, 323)];
+    //    self.imgView3.image = [UIImage imageNamed:@"dress3.png"];
+    
     
     
     [self.imgView addSubview:self.imgView2];
     [self.imgView addSubview:self.imgView1];
     
     
-//    [self.imgView addSubview:self.imgView3];
-//    [self.imgView addSubview:self.imgView4];
+        [self.imgView addSubview:self.imgView3];
+    //    [self.imgView addSubview:self.imgView4];
     
     
-//***** add gif
-//    UIImage* mygif = [UIImage animatedImageWithAnimatedGIFURL:[NSURL URLWithString:@"http://i63.tinypic.com/5a4yeo.gif"]];
-//    UIImageView *test = [[UIImageView alloc] initWithFrame:CGRectMake(0, 730, 800, 300)];
-//    test.image = mygif;
-//    [self.imgView addSubview:test];
+//    ***** add gif
+        UIImage* mygif = [UIImage animatedImageWithAnimatedGIFURL:[NSURL URLWithString:@"http://i63.tinypic.com/5a4yeo.gif"]];
+        UIImageView *test = [[UIImageView alloc] initWithFrame:CGRectMake(0, 730, 800, 300)];
+        test.image = mygif;
+        [self.imgView addSubview:test];
     
     [imagePickerController setCameraOverlayView:self.imgView];
     

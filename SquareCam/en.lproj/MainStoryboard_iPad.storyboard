@@ -43,7 +43,7 @@
         <!--Body-->
         <scene sceneID="IUp-ok-WOb">
             <objects>
-                <viewController id="UGW-fk-JY4" customClass="TestViewController" sceneMemberID="viewController">
+                <viewController id="UGW-fk-JY4" customClass="BodyViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="VvS-5u-dlQ">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -58,7 +58,7 @@
         <!--Two-->
         <scene sceneID="ui8-ia-UqR">
             <objects>
-                <viewController id="I7G-do-EFM" customClass="TestViewController" sceneMemberID="viewController">
+                <viewController id="I7G-do-EFM" customClass="TwoViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yqa-St-P29">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TestViewController : UIViewController<UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIPopoverControllerDelegate>
+@interface BodyViewController : UIViewController<UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIPopoverControllerDelegate>
 {
     UIPopoverController *popoverController;
     UIImagePickerController *imagePickerController;

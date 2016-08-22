@@ -138,6 +138,7 @@ static CGContextRef CreateCGBitmapContextForSize(CGSize size)
 
 @interface UIImage (RotationMethods)
 - (UIImage *)imageRotatedByDegrees:(CGFloat)degrees;
+- (int *)count;
 @end
 
 @implementation UIImage (RotationMethods)
@@ -580,7 +581,9 @@ bail:
 // to detect features and for each draw the red square in a layer and set appropriate orientation
 - (void)drawFaceBoxesForFeatures:(NSArray *)features forVideoBox:(CGRect)clap orientation:(UIDeviceOrientation)orientation
 {
-    
+    if(count%2){
+        return;
+    }
     
 	NSArray *sublayers = [NSArray arrayWithArray:[previewLayer sublayers]];
 	NSInteger sublayersCount = [sublayers count], currentSublayer = 0;
@@ -761,7 +764,7 @@ bail:
     // that represents image data valid for display.
 	CMFormatDescriptionRef fdesc = CMSampleBufferGetFormatDescription(sampleBuffer);
 	CGRect clap = CMVideoFormatDescriptionGetCleanAperture(fdesc, false /*originIsTopLeft == false*/);
-    [NSThread sleepForTimeInterval:0.5];
+//    [NSThread sleepForTimeInterval:0.5];
 	dispatch_async(dispatch_get_main_queue(), ^(void) {
 		[self drawFaceBoxesForFeatures:features forVideoBox:clap orientation:curDeviceOrientation];
 	});
@@ -818,7 +821,21 @@ bail:
 	[self setupAVCapture];
 	square = [[UIImage imageNamed:@"sg.png"] retain];
      [self helper];
+    NSTimer *timer = [NSTimer timerWithTimeInterval:1
+                                             target:self
+                                           selector:@selector(timerFired)
+                                           userInfo:nil repeats:YES];
+    [[NSRunLoop mainRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
 	}
+-(void) timerFired{
+    count++;
+}
+-(void) next{
+    NSLog(@"adfasfas");
+    square = [[UIImage imageNamed:@"sg2.png"] retain];
+    [self helper];
+    
+}
 -(void)helper{
     [self setupAVCapture];
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];

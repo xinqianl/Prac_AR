@@ -65,6 +65,7 @@
 	CIDetector *faceDetector;
 	CGFloat beginGestureScale;
 	CGFloat effectiveScale;
+    NSInteger count;
    
 }
 

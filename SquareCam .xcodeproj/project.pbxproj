@@ -28,7 +28,7 @@
 		2BA4851813F1E6DB000BABB3 /* squarePNG.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BA4851513F1E6DB000BABB3 /* squarePNG.png */; };
 		2BA4851A13F1EC39000BABB3 /* ReadMe.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2BA4851913F1EC39000BABB3 /* ReadMe.txt */; };
 		416077B21D5D66DD006571EB /* sg.png in Resources */ = {isa = PBXBuildFile; fileRef = 416077B11D5D66DD006571EB /* sg.png */; };
-		417197891D6A948B00A2D3FF /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 417197851D6A948B00A2D3FF /* TestViewController.m */; };
+		417197891D6A948B00A2D3FF /* BodyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 417197851D6A948B00A2D3FF /* BodyViewController.m */; };
 		4171978A1D6A948B00A2D3FF /* UIImage+animatedGIF.m in Sources */ = {isa = PBXBuildFile; fileRef = 417197881D6A948B00A2D3FF /* UIImage+animatedGIF.m */; };
 		417197921D6A949E00A2D3FF /* jeans.png in Resources */ = {isa = PBXBuildFile; fileRef = 4171978B1D6A949E00A2D3FF /* jeans.png */; };
 		417197931D6A949E00A2D3FF /* sg2.png in Resources */ = {isa = PBXBuildFile; fileRef = 4171978C1D6A949E00A2D3FF /* sg2.png */; };
@@ -37,6 +37,10 @@
 		417197961D6A949E00A2D3FF /* polo5.png in Resources */ = {isa = PBXBuildFile; fileRef = 4171978F1D6A949E00A2D3FF /* polo5.png */; };
 		417197971D6A949E00A2D3FF /* green.png in Resources */ = {isa = PBXBuildFile; fileRef = 417197901D6A949E00A2D3FF /* green.png */; };
 		417197981D6A949E00A2D3FF /* polo1.png in Resources */ = {isa = PBXBuildFile; fileRef = 417197911D6A949E00A2D3FF /* polo1.png */; };
+		4171979B1D6A9DD800A2D3FF /* TwoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4171979A1D6A9DD800A2D3FF /* TwoViewController.m */; };
+		4171979D1D6AA60900A2D3FF /* shorts.png in Resources */ = {isa = PBXBuildFile; fileRef = 4171979C1D6AA60900A2D3FF /* shorts.png */; };
+		4171979F1D6AA71A00A2D3FF /* purple.png in Resources */ = {isa = PBXBuildFile; fileRef = 4171979E1D6AA71A00A2D3FF /* purple.png */; };
+		417197A11D6AA87C00A2D3FF /* dress1.png in Resources */ = {isa = PBXBuildFile; fileRef = 417197A01D6AA87C00A2D3FF /* dress1.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,8 +68,8 @@
 		2BA4851513F1E6DB000BABB3 /* squarePNG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = squarePNG.png; path = SquareCam/squarePNG.png; sourceTree = SOURCE_ROOT; };
 		2BA4851913F1EC39000BABB3 /* ReadMe.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ReadMe.txt; sourceTree = "<group>"; };
 		416077B11D5D66DD006571EB /* sg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = sg.png; path = SquareCam/sg.png; sourceTree = SOURCE_ROOT; };
-		417197851D6A948B00A2D3FF /* TestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TestViewController.m; path = SquareCam/TestViewController.m; sourceTree = SOURCE_ROOT; };
-		417197861D6A948B00A2D3FF /* TestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TestViewController.h; path = SquareCam/TestViewController.h; sourceTree = SOURCE_ROOT; };
+		417197851D6A948B00A2D3FF /* BodyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BodyViewController.m; path = SquareCam/BodyViewController.m; sourceTree = SOURCE_ROOT; };
+		417197861D6A948B00A2D3FF /* BodyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BodyViewController.h; path = SquareCam/BodyViewController.h; sourceTree = SOURCE_ROOT; };
 		417197871D6A948B00A2D3FF /* UIImage+animatedGIF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+animatedGIF.h"; path = "SquareCam/UIImage+animatedGIF.h"; sourceTree = SOURCE_ROOT; };
 		417197881D6A948B00A2D3FF /* UIImage+animatedGIF.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+animatedGIF.m"; path = "SquareCam/UIImage+animatedGIF.m"; sourceTree = SOURCE_ROOT; };
 		4171978B1D6A949E00A2D3FF /* jeans.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = jeans.png; path = SquareCam/jeans.png; sourceTree = SOURCE_ROOT; };
@@ -75,6 +79,11 @@
 		4171978F1D6A949E00A2D3FF /* polo5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = polo5.png; path = SquareCam/polo5.png; sourceTree = SOURCE_ROOT; };
 		417197901D6A949E00A2D3FF /* green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = green.png; path = SquareCam/green.png; sourceTree = SOURCE_ROOT; };
 		417197911D6A949E00A2D3FF /* polo1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = polo1.png; path = SquareCam/polo1.png; sourceTree = SOURCE_ROOT; };
+		417197991D6A9DD800A2D3FF /* TwoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TwoViewController.h; path = SquareCam/TwoViewController.h; sourceTree = SOURCE_ROOT; };
+		4171979A1D6A9DD800A2D3FF /* TwoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TwoViewController.m; path = SquareCam/TwoViewController.m; sourceTree = SOURCE_ROOT; };
+		4171979C1D6AA60900A2D3FF /* shorts.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = shorts.png; path = SquareCam/shorts.png; sourceTree = SOURCE_ROOT; };
+		4171979E1D6AA71A00A2D3FF /* purple.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = purple.png; path = SquareCam/purple.png; sourceTree = SOURCE_ROOT; };
+		417197A01D6AA87C00A2D3FF /* dress1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = dress1.png; path = SquareCam/dress1.png; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,14 +146,16 @@
 		1B867FE2139D4AD300AD6B47 /* SquareCam */ = {
 			isa = PBXGroup;
 			children = (
-				417197851D6A948B00A2D3FF /* TestViewController.m */,
-				417197861D6A948B00A2D3FF /* TestViewController.h */,
+				417197851D6A948B00A2D3FF /* BodyViewController.m */,
+				417197861D6A948B00A2D3FF /* BodyViewController.h */,
 				417197871D6A948B00A2D3FF /* UIImage+animatedGIF.h */,
 				417197881D6A948B00A2D3FF /* UIImage+animatedGIF.m */,
 				2BA4850313F1E6AA000BABB3 /* SquareCamAppDelegate.h */,
 				2BA4850413F1E6AA000BABB3 /* SquareCamAppDelegate.m */,
 				2BA4850513F1E6AA000BABB3 /* SquareCamViewController.h */,
 				2B0EF001170E3E27008EDA06 /* SquareCamViewController.m */,
+				417197991D6A9DD800A2D3FF /* TwoViewController.h */,
+				4171979A1D6A9DD800A2D3FF /* TwoViewController.m */,
 				2BA4850C13F1E6CC000BABB3 /* MainStoryboard_iPad.storyboard */,
 				2BA4850E13F1E6CC000BABB3 /* MainStoryboard_iPhone.storyboard */,
 				1B867FE3139D4AD300AD6B47 /* Supporting Files */,
@@ -156,6 +167,9 @@
 		1B867FE3139D4AD300AD6B47 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				417197A01D6AA87C00A2D3FF /* dress1.png */,
+				4171979E1D6AA71A00A2D3FF /* purple.png */,
+				4171979C1D6AA60900A2D3FF /* shorts.png */,
 				4171978B1D6A949E00A2D3FF /* jeans.png */,
 				4171978C1D6A949E00A2D3FF /* sg2.png */,
 				4171978D1D6A949E00A2D3FF /* wave.gif */,
@@ -222,12 +236,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4171979D1D6AA60900A2D3FF /* shorts.png in Resources */,
 				417197951D6A949E00A2D3FF /* indian.png in Resources */,
 				417197931D6A949E00A2D3FF /* sg2.png in Resources */,
 				1B867FF0139D4AD300AD6B47 /* MainStoryboard_iPhone.storyboard in Resources */,
 				1B867FF3139D4AD300AD6B47 /* MainStoryboard_iPad.storyboard in Resources */,
 				2BA4851013F1E6CC000BABB3 /* MainStoryboard_iPad.storyboard in Resources */,
 				416077B21D5D66DD006571EB /* sg.png in Resources */,
+				417197A11D6AA87C00A2D3FF /* dress1.png in Resources */,
 				417197961D6A949E00A2D3FF /* polo5.png in Resources */,
 				417197971D6A949E00A2D3FF /* green.png in Resources */,
 				417197941D6A949E00A2D3FF /* wave.gif in Resources */,
@@ -237,6 +253,7 @@
 				417197921D6A949E00A2D3FF /* jeans.png in Resources */,
 				2BA4851A13F1EC39000BABB3 /* ReadMe.txt in Resources */,
 				2B0EF004170E3E3A008EDA06 /* Default-568h@2x.png in Resources */,
+				4171979F1D6AA71A00A2D3FF /* purple.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -249,7 +266,8 @@
 			files = (
 				2BA4850713F1E6AA000BABB3 /* SquareCamAppDelegate.m in Sources */,
 				2BA4851713F1E6DB000BABB3 /* main.m in Sources */,
-				417197891D6A948B00A2D3FF /* TestViewController.m in Sources */,
+				417197891D6A948B00A2D3FF /* BodyViewController.m in Sources */,
+				4171979B1D6A9DD800A2D3FF /* TwoViewController.m in Sources */,
 				4171978A1D6A948B00A2D3FF /* UIImage+animatedGIF.m in Sources */,
 				2B0EF002170E3E27008EDA06 /* SquareCamViewController.m in Sources */,
 			);
