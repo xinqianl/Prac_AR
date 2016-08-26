@@ -764,7 +764,7 @@ bail:
     // that represents image data valid for display.
 	CMFormatDescriptionRef fdesc = CMSampleBufferGetFormatDescription(sampleBuffer);
 	CGRect clap = CMVideoFormatDescriptionGetCleanAperture(fdesc, false /*originIsTopLeft == false*/);
-//    [NSThread sleepForTimeInterval:0.5];
+//    [NSThread sleepForTimeInterval:1];
 	dispatch_async(dispatch_get_main_queue(), ^(void) {
 		[self drawFaceBoxesForFeatures:features forVideoBox:clap orientation:curDeviceOrientation];
 	});
@@ -816,43 +816,133 @@ bail:
 
 - (void)viewDidLoad
 {
+    self.flag = YES;
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
 	[self setupAVCapture];
-	square = [[UIImage imageNamed:@"sg.png"] retain];
-     [self helper];
-    NSTimer *timer = [NSTimer timerWithTimeInterval:1
+    square = [[UIImage imageNamed:@"sg0.png"] retain];
+    [self helper];
+    NSTimer *timer = [NSTimer timerWithTimeInterval:0.5
                                              target:self
                                            selector:@selector(timerFired)
                                            userInfo:nil repeats:YES];
     [[NSRunLoop mainRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
+    [self performBackgroundTask];
+    
 	}
+- (void)performBackgroundTask
+{
+    dispatch_queue_t serverDelaySimulationThread = dispatch_queue_create("com.xxx.serverDelay", nil);
+    dispatch_async(serverDelaySimulationThread, ^{
+        while (self.flag) {
+            
+            [NSThread sleepForTimeInterval:0.1];
+            [self query];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                
+            }
+                           );
+        }
+    });
+    
+}
+//-(void)viewDidDisappear:(BOOL)animated{
+//    self.flag = NO;
+//    [super viewDidDisappear:animated];
+//}
+- (void) query{
+    NSLog(@"QUERYYYY");
+    NSString *link = @"http://ec2-184-72-73-84.compute-1.amazonaws.com/job";
+    
+    NSURLSessionConfiguration *defaultConfigObject = [NSURLSessionConfiguration defaultSessionConfiguration];
+    NSURLSession *defaultSession = [NSURLSession sessionWithConfiguration: defaultConfigObject delegate: self delegateQueue: [NSOperationQueue mainQueue]];
+    
+    NSURL * url = [NSURL URLWithString:link];
+    
+    NSURLSessionDataTask * dataTask = [defaultSession dataTaskWithURL:url
+                                                    completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+                                                        if(error == nil)
+                                                        {
+                                                            
+                                                            NSDictionary *jsonResponse = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+                                                            
+                                                            self.idNum = [[jsonResponse valueForKey:@"itemId"] intValue];
+                                                            NSString *action= [jsonResponse valueForKey:@"action"];
+                                                            
+                                                            NSLog(@"action %@",action);
+                                                            NSLog(@"item id %li", self.idNum);
+                                                            
+                                                            if([action isEqualToString:@"toShow"]){
+                                                                
+                                                                    if(self.idNum == 12){
+//                                                                        square = [[UIImage imageNamed:@"sg2.png"] retain];
+                                                                        [self nextnext];
+                                                                    }
+                                                                    if(self.idNum == 13){
+//                                                                        square = [[UIImage imageNamed:@"sg.png"] retain];
+//                                                                        [self.view setNeedsDisplay];
+                                                                        [self next];
+                                                                    }
+                                                                    if(self.idNum == 14){
+                                                                    //                                                                        square = [[UIImage imageNamed:@"sg.png"] retain];
+                                                                    //                                                                        [self.view setNeedsDisplay];
+                                                                    [self nextnextnext];
+                                                                }
+                                                                
+                                                            }
+                                                            
+                                                            
+                                                            
+                                                            //[self presentModalViewController:imagePickerController animated:YES];
+                                                            
+                                                        }
+                                                        
+                                                    }];
+    
+    [dataTask resume];
+}
 -(void) timerFired{
+    
     count++;
+//    NSLog(@"%i",count);
 }
 -(void) next{
-    NSLog(@"adfasfas");
+    
+    square = [[UIImage imageNamed:@"sg.png"] retain];
+    [self helper];
+    
+}
+-(void) nextnext{
+    
     square = [[UIImage imageNamed:@"sg2.png"] retain];
     [self helper];
     
 }
+-(void) nextnextnext{
+    
+    square = [[UIImage imageNamed:@"sg3.png"] retain];
+    [self helper];
+    
+}
+
+
 -(void)helper{
     [self setupAVCapture];
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    [button addTarget:self
-               action:@selector(takePicture:)
-     forControlEvents:UIControlEventTouchUpInside];
-    [button setTitle:@"Snap" forState:UIControlStateNormal];
-    button.frame = CGRectMake(190.0, 10.0, 160.0, 40.0);
-    [self.view addSubview:button];
-    
-    UIButton *button2 = [UIButton buttonWithType:UIButtonTypeCustom];
-    [button2 addTarget:self
-                action:@selector(next)
-      forControlEvents:UIControlEventTouchUpInside];
-    [button2 setTitle:@"Next" forState:UIControlStateNormal];
-    button2.frame = CGRectMake(100.0, 10.0, 160.0, 40.0);
-    [self.view addSubview:button2];
+//    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+//    [button addTarget:self
+//               action:@selector(takePicture:)
+//     forControlEvents:UIControlEventTouchUpInside];
+//    [button setTitle:@"Snap" forState:UIControlStateNormal];
+//    button.frame = CGRectMake(190.0, 10.0, 160.0, 40.0);
+//    [self.view addSubview:button];
+//    
+//    UIButton *button2 = [UIButton buttonWithType:UIButtonTypeCustom];
+//    [button2 addTarget:self
+//                action:@selector(next)
+//      forControlEvents:UIControlEventTouchUpInside];
+//    [button2 setTitle:@"Next" forState:UIControlStateNormal];
+//    button2.frame = CGRectMake(100.0, 10.0, 160.0, 40.0);
+//    [self.view addSubview:button2];
     
     
     NSDictionary *detectorOptions = [[NSDictionary alloc] initWithObjectsAndKeys:CIDetectorAccuracyLow, CIDetectorAccuracy, nil];
@@ -893,6 +983,7 @@ bail:
 
 - (void)viewWillAppear:(BOOL)animated
 {
+//    self.flag = NO;
     [super viewWillAppear:animated];
 }
 
@@ -906,10 +997,10 @@ bail:
 	[super viewWillDisappear:animated];
 }
 
-- (void)viewDidDisappear:(BOOL)animated
-{
-	[super viewDidDisappear:animated];
-}
+//- (void)viewDidDisappear:(BOOL)animated
+//{
+//	[super viewDidDisappear:animated];
+//}
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {

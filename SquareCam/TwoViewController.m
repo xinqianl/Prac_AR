@@ -16,6 +16,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.flag = YES;
 //    self.title = @"Body";
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     [button addTarget:self
@@ -27,16 +28,26 @@
     [self.view addSubview:button];
     [self helper];
     [self performBackgroundTask];
+    self.flag = YES;
     // Do any additional setup after loading the view.
     
 }
+//- (void)viewWillAppear:(BOOL)animated
+//{
+//    self.flag = NO;
+//    [super viewWillAppear:animated];
+//}
+
+//-(void)viewDidDisappear:(BOOL)animated{
+//    self.flag = NO;
+//}
 - (void)performBackgroundTask
 {
     dispatch_queue_t serverDelaySimulationThread = dispatch_queue_create("com.xxx.serverDelay", nil);
     dispatch_async(serverDelaySimulationThread, ^{
-        while (true) {
+        while (self.flag) {
             
-            [NSThread sleepForTimeInterval:1.0];
+            [NSThread sleepForTimeInterval:0.2];
             [self query];
             dispatch_async(dispatch_get_main_queue(), ^{
                 
@@ -48,7 +59,7 @@
 }
 - (void) query{
     
-    NSString *link = @"http://ec2-52-90-252-226.compute-1.amazonaws.com/job";
+    NSString *link = @"http://ec2-184-72-73-84.compute-1.amazonaws.com/job";
     
     NSURLSessionConfiguration *defaultConfigObject = [NSURLSessionConfiguration defaultSessionConfiguration];
     NSURLSession *defaultSession = [NSURLSession sessionWithConfiguration: defaultConfigObject delegate: self delegateQueue: [NSOperationQueue mainQueue]];
@@ -64,53 +75,36 @@
                                                             
                                                             self.idNum = [[jsonResponse valueForKey:@"itemId"] intValue];
                                                             NSString *action= [jsonResponse valueForKey:@"action"];
-                                                            NSString *part = [jsonResponse valueForKey:@"part"];
-                                                            NSLog(part);
-                                                            NSLog(action);
+//                                                            NSString *part = [jsonResponse valueForKey:@"part"];
+//                                                            NSLog(part);
+                                                            NSLog(@"action %@", action);
                                                             NSLog(@"%li", self.idNum);
                                                             
                                                             if([action isEqualToString:@"toShow"]){
-                                                                if([part isEqualToString:@"Up"]){
-                                                                    if(self.idNum == 1){
-                                                                        [self.imgView1 setFrame:CGRectMake(100, 150, 177, 224)];
-                                                                        self.imgView1.image = [UIImage imageNamed:@"polo.png"];
+                                                                
+                                                                    if(self.idNum == 10){
+                                                                        [self.imgView1 setFrame:CGRectMake(75, 315, 268, 324)];
+                                                                        self.imgView1.image = [UIImage imageNamed:@"green.png"];
+                                                                        [self.imgView2 setFrame:CGRectMake(120, 535, 176, 231)];
+                                                                        self.imgView2.image = [UIImage imageNamed:@"shorts3.png"];
+                                                                        [self.imgView3 setFrame:CGRectMake(350, 350, 267, 427)];
+                                                                        self.imgView3.image = [UIImage imageNamed:@"dress1.png"];
+
                                                                     }
                                                                     
-                                                                    if(self.idNum == 2){
-                                                                        [self.imgView1 setFrame:CGRectMake(100, 150, 177, 224)];
-                                                                        self.imgView1.image = [UIImage imageNamed:@"polo2.png"];
-                                                                    }
-                                                                    if(self.idNum == 3){
-                                                                        [self.imgView1 setFrame:CGRectMake(100, 150, 177, 224)];
-                                                                        self.imgView1.image = [UIImage imageNamed:@"polo3.png"];
-                                                                    }
-                                                                    if(self.idNum==5){
-                                                                        [self.imgView1 setFrame:CGRectMake(88, 150, 200, 200)];
-                                                                        self.imgView1.image = [UIImage imageNamed:@"polo4.png"];
+                                                                    if(self.idNum == 11){
+                                                                        UIImage* mygif = [UIImage animatedImageWithAnimatedGIFURL:[NSURL URLWithString:@"http://i63.tinypic.com/5a4yeo.gif"]];
+                                                                        [self.test setFrame:CGRectMake(0, 830, 800, 300)];
+                                                                        self.test.image = mygif;
                                                                         
                                                                     }
-                                                                }
-                                                                if([part isEqualToString:@"Down"]){
-                                                                    if(self.idNum == 4){
-                                                                        self.imgView2.image = [UIImage imageNamed:@"shorts.png"];
-                                                                    }
-                                                                }
+                                                                
+                                                               
                                                             }
-                                                            if([action isEqualToString:@"toRemove"]){
-                                                                if([part isEqualToString:@"Up"]){
-                                                                    
-                                                                    self.imgView1.image = nil;
-                                                                    
-                                                                }
-                                                                if([part isEqualToString:@"Down"]){
-                                                                    
-                                                                    self.imgView2.image= nil;
-                                                                    
-                                                                }
-                                                            }
+                                                            
                                                             [imagePickerController setCameraOverlayView:self.imgView];
                                                             
-                                                            //                                                             [self presentModalViewController:imagePickerController animated:YES];
+                                                            //[self presentModalViewController:imagePickerController animated:YES];
                                                             
                                                         }
                                                         
@@ -118,6 +112,7 @@
     
     [dataTask resume];
 }
+
 - (void) helper{
     if (popoverController)
         return;
@@ -133,56 +128,29 @@
     
     self.imgView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 500, 600)];
     
-    self.imgView2 = [[UIImageView alloc] initWithFrame:CGRectMake(126, 320, 120, 130)];
+    self.imgView2 = [[UIImageView alloc] initWithFrame:CGRectMake(110, 500, 187, 230)];
     self.imgView2.image = nil;
     
     
     self.imgView1 = [[UIImageView alloc] initWithFrame:CGRectMake(88, 150, 200, 200)];
     self.imgView1.image = nil;
     
-     //green/purple done
-        [self.imgView1 setFrame:CGRectMake(150, 240, 187, 225)];
-        self.imgView1.image = [UIImage imageNamed:@"purple.png"];
-    
-//    [self.imgView1 setFrame:CGRectMake(150, 210, 287, 319)];
-//    self.imgView1.image = [UIImage imageNamed:@"indian.png"];
-    
- //       blue shorts done
-        self.imgView2 = [[UIImageView alloc] initWithFrame:CGRectMake(175, 380, 130, 160)];
-        self.imgView2.image = [UIImage imageNamed:@"shorts.png"];
-    
-//    self.imgView2 = [[UIImageView alloc] initWithFrame:CGRectMake(210, 470, 170, 170)];
-//    self.imgView2.image = [UIImage imageNamed:@"jeans.png"];
-    //
-    //    self.imgView3 = [[UIImageView alloc] initWithFrame:CGRectMake(180, 120, 130, 160)];
-    //    self.imgView3.image = [UIImage imageNamed:@"polo_girl1.png"];
-    //    self.imgView4 = [[UIImageView alloc] initWithFrame:CGRectMake(165, 230, 160, 120)];
-    //    self.imgView4.image = [UIImage imageNamed:@"skirt1.png"];
-    
-            self.imgView3 = [[UIImageView alloc] initWithFrame:CGRectMake(350, 260, 193, 402)];
-            self.imgView3.image = [UIImage imageNamed:@"dress1.png"];
-    
-    //    self.imgView3 = [[UIImageView alloc] initWithFrame:CGRectMake(150, 120, 145, 323)];
-    //    self.imgView3.image = [UIImage imageNamed:@"dress3.png"];
-    
+    self.imgView3 = [[UIImageView alloc] initWithFrame:CGRectMake(350, 310, 270, 455)];
+    self.imgView3.image = nil;
     
     
     [self.imgView addSubview:self.imgView2];
     [self.imgView addSubview:self.imgView1];
+    [self.imgView addSubview:self.imgView3];
     
-    
-        [self.imgView addSubview:self.imgView3];
-    //    [self.imgView addSubview:self.imgView4];
-    
-    
-//    ***** add gif
-        UIImage* mygif = [UIImage animatedImageWithAnimatedGIFURL:[NSURL URLWithString:@"http://i63.tinypic.com/5a4yeo.gif"]];
-        UIImageView *test = [[UIImageView alloc] initWithFrame:CGRectMake(0, 730, 800, 300)];
-        test.image = mygif;
-        [self.imgView addSubview:test];
+    self.test = [[UIImageView alloc] initWithFrame:CGRectMake(0, 830, 800, 300)];
+//    UIImage* mygif = [UIImage animatedImageWithAnimatedGIFURL:[NSURL URLWithString:@"http://i63.tinypic.com/5a4yeo.gif"]];
+//    [self.test setFrame:CGRectMake(0, 830, 800, 300)];
+//    self.test.image = mygif;
+
+    [self.imgView addSubview:self.test];
     
     [imagePickerController setCameraOverlayView:self.imgView];
-    
     [self presentModalViewController:imagePickerController animated:YES];
 }
 - (void)didReceiveMemoryWarning {

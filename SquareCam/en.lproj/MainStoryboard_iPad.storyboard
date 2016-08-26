@@ -70,10 +70,10 @@
             </objects>
             <point key="canvasLocation" x="-1340" y="3057"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Main Bar Controller-->
         <scene sceneID="ckE-0J-h2n">
             <objects>
-                <tabBarController id="CS1-0h-t2O" sceneMemberID="viewController">
+                <tabBarController id="CS1-0h-t2O" customClass="MainBarController" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="THv-3q-8gf">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>

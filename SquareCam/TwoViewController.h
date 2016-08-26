@@ -20,4 +20,6 @@
 @property UIImageView *imgView2;
 @property UIImageView *imgView3;
 @property UIImageView *imgView4;
+@property UIImageView *test;
+@property BOOL *flag;
 @end

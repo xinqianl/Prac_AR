@@ -41,6 +41,10 @@
 		4171979D1D6AA60900A2D3FF /* shorts.png in Resources */ = {isa = PBXBuildFile; fileRef = 4171979C1D6AA60900A2D3FF /* shorts.png */; };
 		4171979F1D6AA71A00A2D3FF /* purple.png in Resources */ = {isa = PBXBuildFile; fileRef = 4171979E1D6AA71A00A2D3FF /* purple.png */; };
 		417197A11D6AA87C00A2D3FF /* dress1.png in Resources */ = {isa = PBXBuildFile; fileRef = 417197A01D6AA87C00A2D3FF /* dress1.png */; };
+		417197A31D6D253900A2D3FF /* shorts3.png in Resources */ = {isa = PBXBuildFile; fileRef = 417197A21D6D253900A2D3FF /* shorts3.png */; };
+		417197A61D6DF0FB00A2D3FF /* MainBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 417197A51D6DF0FB00A2D3FF /* MainBarController.m */; };
+		417197A81D6DFBB100A2D3FF /* sg0.png in Resources */ = {isa = PBXBuildFile; fileRef = 417197A71D6DFBB100A2D3FF /* sg0.png */; };
+		417197AA1D6E3DDF00A2D3FF /* sg3.png in Resources */ = {isa = PBXBuildFile; fileRef = 417197A91D6E3DDF00A2D3FF /* sg3.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -84,6 +88,11 @@
 		4171979C1D6AA60900A2D3FF /* shorts.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = shorts.png; path = SquareCam/shorts.png; sourceTree = SOURCE_ROOT; };
 		4171979E1D6AA71A00A2D3FF /* purple.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = purple.png; path = SquareCam/purple.png; sourceTree = SOURCE_ROOT; };
 		417197A01D6AA87C00A2D3FF /* dress1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = dress1.png; path = SquareCam/dress1.png; sourceTree = SOURCE_ROOT; };
+		417197A21D6D253900A2D3FF /* shorts3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = shorts3.png; path = SquareCam/shorts3.png; sourceTree = SOURCE_ROOT; };
+		417197A41D6DF0FB00A2D3FF /* MainBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainBarController.h; path = SquareCam/MainBarController.h; sourceTree = SOURCE_ROOT; };
+		417197A51D6DF0FB00A2D3FF /* MainBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainBarController.m; path = SquareCam/MainBarController.m; sourceTree = SOURCE_ROOT; };
+		417197A71D6DFBB100A2D3FF /* sg0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = sg0.png; path = SquareCam/sg0.png; sourceTree = SOURCE_ROOT; };
+		417197A91D6E3DDF00A2D3FF /* sg3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = sg3.png; path = SquareCam/sg3.png; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +159,8 @@
 				417197861D6A948B00A2D3FF /* BodyViewController.h */,
 				417197871D6A948B00A2D3FF /* UIImage+animatedGIF.h */,
 				417197881D6A948B00A2D3FF /* UIImage+animatedGIF.m */,
+				417197A41D6DF0FB00A2D3FF /* MainBarController.h */,
+				417197A51D6DF0FB00A2D3FF /* MainBarController.m */,
 				2BA4850313F1E6AA000BABB3 /* SquareCamAppDelegate.h */,
 				2BA4850413F1E6AA000BABB3 /* SquareCamAppDelegate.m */,
 				2BA4850513F1E6AA000BABB3 /* SquareCamViewController.h */,
@@ -167,6 +178,9 @@
 		1B867FE3139D4AD300AD6B47 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				417197A91D6E3DDF00A2D3FF /* sg3.png */,
+				417197A71D6DFBB100A2D3FF /* sg0.png */,
+				417197A21D6D253900A2D3FF /* shorts3.png */,
 				417197A01D6AA87C00A2D3FF /* dress1.png */,
 				4171979E1D6AA71A00A2D3FF /* purple.png */,
 				4171979C1D6AA60900A2D3FF /* shorts.png */,
@@ -236,6 +250,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				417197A31D6D253900A2D3FF /* shorts3.png in Resources */,
 				4171979D1D6AA60900A2D3FF /* shorts.png in Resources */,
 				417197951D6A949E00A2D3FF /* indian.png in Resources */,
 				417197931D6A949E00A2D3FF /* sg2.png in Resources */,
@@ -247,11 +262,13 @@
 				417197961D6A949E00A2D3FF /* polo5.png in Resources */,
 				417197971D6A949E00A2D3FF /* green.png in Resources */,
 				417197941D6A949E00A2D3FF /* wave.gif in Resources */,
+				417197A81D6DFBB100A2D3FF /* sg0.png in Resources */,
 				2BA4851113F1E6CC000BABB3 /* MainStoryboard_iPhone.storyboard in Resources */,
 				2BA4851813F1E6DB000BABB3 /* squarePNG.png in Resources */,
 				417197981D6A949E00A2D3FF /* polo1.png in Resources */,
 				417197921D6A949E00A2D3FF /* jeans.png in Resources */,
 				2BA4851A13F1EC39000BABB3 /* ReadMe.txt in Resources */,
+				417197AA1D6E3DDF00A2D3FF /* sg3.png in Resources */,
 				2B0EF004170E3E3A008EDA06 /* Default-568h@2x.png in Resources */,
 				4171979F1D6AA71A00A2D3FF /* purple.png in Resources */,
 			);
@@ -268,6 +285,7 @@
 				2BA4851713F1E6DB000BABB3 /* main.m in Sources */,
 				417197891D6A948B00A2D3FF /* BodyViewController.m in Sources */,
 				4171979B1D6A9DD800A2D3FF /* TwoViewController.m in Sources */,
+				417197A61D6DF0FB00A2D3FF /* MainBarController.m in Sources */,
 				4171978A1D6A948B00A2D3FF /* UIImage+animatedGIF.m in Sources */,
 				2B0EF002170E3E27008EDA06 /* SquareCamViewController.m in Sources */,
 			);

@@ -66,6 +66,7 @@
 	CGFloat beginGestureScale;
 	CGFloat effectiveScale;
     NSInteger count;
+    
    
 }
 
@@ -73,5 +74,6 @@
 - (IBAction)switchCameras:(id)sender;
 - (IBAction)handlePinchGesture:(UIGestureRecognizer *)sender;
 - (IBAction)toggleFaceDetection:(id)sender;
-
+@property int idNum;
+@property BOOL *flag;
 @end
